@@ -25,6 +25,7 @@ ChatGPT was used to build most of the code involved in this project, then review
 ## Live Links
 
 - Live Full-Stack Render Site: https://ics385-term3project.onrender.com
+- Full-Stack Backend Render/Admin Login Site: https://ics385-term3project.onrender.com/admin/login
 - GitHub Pages Frontend Site: https://haydenmk.github.io/ics385-term3project/
 - GitHub Repository: https://github.com/haydenmk/ics385-term3project
 
