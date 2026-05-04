@@ -30,11 +30,19 @@ ChatGPT was used to build most of the code involved in this project, then review
 
 ## Setup Instructions
 
-- To set up the project locally, clone the GitHub repository, move into the project folder, and install the required backend dependencies by running `git clone https://github.com/haydenmk/ics385-term3project.git`, `cd ics385-term3project`, and `npm install`. 
-- After the dependencies are installed, copy `.env.example` to a new `.env` file and fill in the required environment variables, including `MONGO_URI`, `SESSION_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL`, `OPENWEATHER_API_KEY`, and `NODE_ENV`. On Windows PowerShell, the file can be copied with `copy .env.example .env`. On Mac or Linux, it can be copied with `cp .env.example .env`.
-- Once the `.env` file is completed, start the backend server from the root project folder with `npm start`. The backend will run locally at `http://localhost:3000`, and the admin login page can be accessed at `http://localhost:3000/admin/login`.
-- To run the React frontend locally, open a second terminal, move into the client folder with `cd client`, install the frontend dependencies with `npm install`, and start the Vite development server with `npm run dev`. The React frontend will run locally at `http://localhost:5173`.
-- Automated tests can be run from the root project folder with `npm test`.
+- Clone the repository: `git clone https://github.com/haydenmk/ics385-term3project.git`
+- Move into the project folder: `cd ics385-term3project`
+- Install the backend packages: `npm install`
+- Copy `.env.example` into a new `.env` file: `copy .env.example .env`
+- Add the required values inside `.env`: `MONGO_URI`, `SESSION_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL`, `OPENWEATHER_API_KEY`, and `NODE_ENV`
+- Start the backend server: `npm start`
+- Open the backend locally at `http://localhost:3000`
+- Open the admin login page at `http://localhost:3000/admin/login`
+- To run the React frontend, open a second terminal and go into the client folder: `cd client`
+- Install the frontend packages: `npm install`
+- Start the React frontend: `npm run dev`
+- Open the frontend locally at `http://localhost:5173`
+- To run the tests, go back to the root project folder and run: `npm test`
 
 ## Technology Stack
 
