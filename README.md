@@ -186,3 +186,8 @@ Term 3 Project/
 
 ## Test Output Screenshot
 <img width="744" height="313" alt="image" src="https://github.com/user-attachments/assets/24f82911-8aa1-470f-ab4a-fff1ed78ecf2" />
+
+## Reflection
+This was overall a fun project that tested my knowledge as well as my use of AI prompts to generate code. I think that creating the outline of the website from our lessons, and then adding week-over-week features
+supplemented by our assignments was very interesting and made me pay attention more in class. My favorite was definitely the Google OAuth implementation because it made logging in even easier and fit my 
+project's target audience even more.
