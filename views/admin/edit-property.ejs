@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Property</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #222;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      color: #0d3b66;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .button-row {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    button {
+      padding: 12px 18px;
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #23867a;
+    }
+
+    .back-link {
+      color: #0d3b66;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Edit Property</h1>
+    <p>Update the rental information shown on your website.</p>
+
+    <form action="/admin/properties/<%= property._id %>" method="POST">
+      <label for="name">Property Name</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        value="<%= property.name %>" 
+        required 
+      />
+
+      <label for="island">Island</label>
+      <select id="island" name="island" required>
+        <option value="Maui" <%= property.island === "Maui" ? "selected" : "" %>>Maui</option>
+        <option value="Oahu" <%= property.island === "Oahu" ? "selected" : "" %>>Oahu</option>
+        <option value="Hawaii Island" <%= property.island === "Hawaii Island" ? "selected" : "" %>>Hawaii Island</option>
+        <option value="Kauai" <%= property.island === "Kauai" ? "selected" : "" %>>Kauai</option>
+        <option value="Molokai" <%= property.island === "Molokai" ? "selected" : "" %>>Molokai</option>
+        <option value="Lanai" <%= property.island === "Lanai" ? "selected" : "" %>>Lanai</option>
+      </select>
+
+      <label for="type">Property Type</label>
+      <select id="type" name="type" required>
+        <option value="hotel" <%= property.type === "hotel" ? "selected" : "" %>>hotel</option>
+        <option value="vacation rental" <%= property.type === "vacation rental" ? "selected" : "" %>>vacation rental</option>
+      </select>
+
+      <label for="price">Price</label>
+      <input 
+        type="text" 
+        id="price" 
+        name="price" 
+        value="<%= property.price || '' %>" 
+        placeholder="$275/night" 
+      />
+
+      <label for="description">Description</label>
+      <textarea 
+        id="description" 
+        name="description" 
+        maxlength="500"
+      ><%= property.description || '' %></textarea>
+
+      <label for="amenities">Amenities</label>
+      <input
+        type="text"
+        id="amenities"
+        name="amenities"
+        value="<%= property.amenities ? property.amenities.join(', ') : '' %>"
+        placeholder="Wi-Fi, Kitchen, Beach access, Parking"
+      />
+
+      <label for="imageURL">Image URL</label>
+      <input 
+        type="text" 
+        id="imageURL" 
+        name="imageURL" 
+        value="<%= property.imageURL || '' %>" 
+        placeholder="/images/turtle-bay-condo.jpg"
+      />
+
+      <label for="targetSegment">Target Segment</label>
+      <input 
+        type="text" 
+        id="targetSegment" 
+        name="targetSegment" 
+        value="<%= property.targetSegment || '' %>" 
+        placeholder="Family"
+      />
+
+      <div class="button-row">
+        <button type="submit">Save Changes</button>
+        <a class="back-link" href="/admin/dashboard">Back to Dashboard</a>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

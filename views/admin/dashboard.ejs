@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #0d3b66;
+    }
+
+    a.logout {
+      display: inline-block;
+      margin-top: 10px;
+      color: white;
+      background: #c0392b;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .property-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      background-color: #ffffff;
+    }
+
+    .property-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .property-meta {
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .property-price {
+      font-weight: bold;
+      color: #2a9d8f;
+      margin-bottom: 8px;
+    }
+
+    .property-description {
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .edit-button {
+      display: inline-block;
+      margin-top: 12px;
+      background-color: #2a9d8f;
+      color: white;
+      padding: 9px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .edit-button:hover {
+      background-color: #23867a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>North Shore Family Vacation Rentals Admin Dashboard</h1>
+      <p>Welcome, <strong><%= user.email %></strong></p>
+      <p>Total properties: <strong><%= properties.length %></strong></p>
+      <p>Total guest reviews: <strong><%= reviewCount %></strong></p>
+      <a class="logout" href="/admin/logout">Logout</a>
+    </div>
+
+    <div class="card">
+      <h2>Property List</h2>
+
+      <div class="property-grid">
+        <% properties.forEach(property => { %>
+          <div class="property-card">
+            <h3><%= property.name %></h3>
+
+            <p class="property-meta">
+              <%= property.island %> — <%= property.type %>
+            </p>
+
+            <p class="property-price">
+              <%= property.price || "No price listed" %>
+            </p>
+
+            <p class="property-description">
+              <%= property.description || "No description added yet." %>
+            </p>
+
+            <a 
+              class="edit-button" 
+              href="/admin/properties/<%= property._id %>/edit"
+            >
+              Edit Property
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
