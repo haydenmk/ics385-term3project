@@ -1,5 +1,5 @@
-## Author
-# Hayden Suzuki
+## Author: Hayden Suzuki
+
 
 # North Shore Family Vacation Rentals
 
