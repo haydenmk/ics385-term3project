@@ -15,6 +15,8 @@ dotenv.config();
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 // Allows the React frontend to request data from this backend server
 app.use(
   cors({
