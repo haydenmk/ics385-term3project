@@ -28,6 +28,14 @@ ChatGPT was used to build most of the code involved in this project, then review
 - GitHub Pages Frontend Site: https://haydenmk.github.io/ics385-term3project/
 - GitHub Repository: https://github.com/haydenmk/ics385-term3project
 
+## Setup Instructions
+
+- To set up the project locally, clone the GitHub repository, move into the project folder, and install the required backend dependencies by running `git clone https://github.com/haydenmk/ics385-term3project.git`, `cd ics385-term3project`, and `npm install`. 
+- After the dependencies are installed, copy `.env.example` to a new `.env` file and fill in the required environment variables, including `MONGO_URI`, `SESSION_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL`, `OPENWEATHER_API_KEY`, and `NODE_ENV`. On Windows PowerShell, the file can be copied with `copy .env.example .env`. On Mac or Linux, it can be copied with `cp .env.example .env`.
+- Once the `.env` file is completed, start the backend server from the root project folder with `npm start`. The backend will run locally at `http://localhost:3000`, and the admin login page can be accessed at `http://localhost:3000/admin/login`.
+- To run the React frontend locally, open a second terminal, move into the client folder with `cd client`, install the frontend dependencies with `npm install`, and start the Vite development server with `npm run dev`. The React frontend will run locally at `http://localhost:5173`.
+- Automated tests can be run from the root project folder with `npm test`.
+
 ## Technology Stack
 
 ### Frontend
