@@ -29,58 +29,65 @@ function initializePassport(passport) {
     )
   );
 
-// Google OAuth login strategy
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        const googleEmail = profile.emails?.[0]?.value;
+  // Google OAuth login strategy
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        try {
+          const googleEmail = profile.emails?.[0]?.value?.toLowerCase();
 
-        if (!googleEmail) {
-          return done(null, false, {
-            message: "No email found from Google account."
-          });
-        }
-
-        const allowedAdminEmail = "haydenmk@hawaii.edu";
-
-        if (googleEmail !== allowedAdminEmail) {
-          return done(null, false, {
-            message: "This Google account is not authorized."
-          });
-        }
-
-        let user = await User.findOne({ email: googleEmail });
-
-        if (user) {
-          if (!user.googleId) {
-            user.googleId = profile.id;
-            user.name = profile.displayName;
-            await user.save();
+          if (!googleEmail) {
+            return done(null, false, {
+              message: "No email found from Google account."
+            });
           }
 
+          const allowedAdminEmail = "haydenmk@hawaii.edu";
+
+          if (googleEmail !== allowedAdminEmail) {
+            return done(null, false, {
+              message: "This Google account is not authorized."
+            });
+          }
+
+          let user = await User.findOne({ googleId: profile.id });
+
+          if (user) {
+            return done(null, user);
+          }
+
+          user = await User.findOne({ email: googleEmail });
+
+          if (user) {
+            user.googleId = profile.id;
+            user.name = profile.displayName;
+            user.provider = "google";
+
+            await user.save();
+
+            return done(null, user);
+          }
+
+          user = await User.create({
+            googleId: profile.id,
+            name: profile.displayName,
+            email: googleEmail,
+            provider: "google",
+            role: "admin"
+          });
+
           return done(null, user);
+        } catch (error) {
+          return done(error);
         }
-
-        user = await User.create({
-          googleId: profile.id,
-          name: profile.displayName,
-          email: googleEmail,
-          role: "admin"
-        });
-
-        return done(null, user);
-      } catch (error) {
-        return done(error);
       }
-    }
-  )
-);
+    )
+  );
 
   passport.serializeUser((user, done) => {
     done(null, user.id);

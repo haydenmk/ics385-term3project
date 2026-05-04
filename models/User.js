@@ -28,6 +28,12 @@ const userSchema = new mongoose.Schema({
     required: false
   },
 
+  provider: {
+    type: String,
+    enum: ["local", "google"],
+    default: "local"
+  },
+
   role: {
     type: String,
     enum: ["admin"],
