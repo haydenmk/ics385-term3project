@@ -16,8 +16,18 @@ function Header({ onDashboardClick }) {
             Visitor Dashboard
           </button>
 
-          <a href="http://localhost:3000/admin/login">Admin</a>
-          <a href="#book" className="book-now-button">Book Now!</a>
+          <a href="https://ics385-term3project.onrender.com/admin/login">
+            Admin
+          </a>
+
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd-gjINIcQDZHrsxeLBW1mDP7VGu9c1GJUAvo639JUTDKwuSw/viewform?usp=sharing&ouid=109622262402141901543"
+            className="book-now-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book Now!
+          </a>
         </nav>
       </div>
     </header>

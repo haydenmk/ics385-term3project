@@ -40,7 +40,7 @@ const featuredRentals = [
       "A newly remodeled family condo in Turtle Bay, Oahu, offering modern amenities and a comfortable stay for families. Includes 2 beds, and easy access to the beach and local attractions.",
     amenities: ["Wi-Fi", "Valet parking", "Kitchenette", "Extra beds", "Pool access"],
     price: "$450 per night | 10% off for stays 7 nights or longer!",
-    imageURL: "images/turtle-bay.jpg"
+    imageURL: "turtle-bay.jpg"
   },
   {
     name: "Hauula Beach House",
@@ -49,7 +49,7 @@ const featuredRentals = [
       "A spacious beach house in Hauula, Oahu, perfect for families looking for a relaxing beach getaway with easy access to local cuisine. Includes 3 beds, a full kitchen, and a private backyard with beach access.",
     amenities: ["Wi-Fi", "Private parking", "Kitchen", "Beach access", "Washer & Dryer", "Grilling area"],
     price: "$500 per night | 15% off for stays 7 nights or longer!",
-    imageURL: "images/hauula-house.jpg"
+    imageURL: "hauula-house.jpg"
   }
 ];
 
